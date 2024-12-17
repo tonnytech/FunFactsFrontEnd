@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { forgotPassword } from "../services/userServices";
+import { forgotPassword } from "../../services/userServices";
 
 function ForgotPassword() {
   const [formData, setFormData] = useState({

@@ -1,10 +1,10 @@
 // src/pages/Login.js
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { loginUser } from "../services/userServices";
+import { loginUser } from "../../services/userServices";
 import { useDispatch, useSelector } from "react-redux";
-import { setUser } from "../redux/slices/userSlice";
-import { getUser } from "../services/userServices";
+import { setUser } from "../../redux/slices/userSlice";
+import { getUser } from "../../services/userServices";
 
 function Login() {
   const [formData, setFormData] = useState({

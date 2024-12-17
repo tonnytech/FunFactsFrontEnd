@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { resetPassword } from "../services/userServices";
+import { resetPassword } from "../../services/userServices";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { setUser } from "../redux/slices/userSlice";
+import { setUser } from "../../redux/slices/userSlice";
 
 function ResetPassword() {
   const [formData, setFormData] = useState({
@@ -18,9 +18,7 @@ function ResetPassword() {
 
   console.log(token);
 
-  const { userRegisterMessage } = useSelector(
-    (state) => state.currentUser
-  );
+  const { userRegisterMessage } = useSelector((state) => state.currentUser);
 
   const handleChange = (e) => {
     const { name, value } = e.target;

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUser, logOutUser } from "../services/userServices";
-import { setUser, logoutUser } from "../redux/slices/userSlice";
+import { getUser, logOutUser } from "../../services/userServices";
+import { setUser, logoutUser } from "../../redux/slices/userSlice";
 import { useNavigate } from "react-router-dom";
 
-function HomePage() {
+function ProfilePage() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("profile"); // State for active section
 
@@ -85,14 +85,15 @@ function HomePage() {
             <div className='space-y-4 mb-4'>
               <h3 className='text-2xl font-bold'>About this website</h3>{" "}
               <p>
-                {user? `Hi ${user.name}, this`: "This"} website is designed provides a secure and user-friendly authentication of users through their email addresses before
-                granting access. Designed with privacy and security at its core,
-                the system ensures that every user’s identity is verified via
-                email confirmation, preventing unauthorized access and enhancing
-                trust. This process guarantees a seamless login experience while
-                maintaining the highest standards of account protection, making
-                it ideal for environments that prioritize secure user
-                management.
+                {user ? `Hi ${user.name}, this` : "This"} website is designed
+                provides a secure and user-friendly authentication of users
+                through their email addresses before granting access. Designed
+                with privacy and security at its core, the system ensures that
+                every user’s identity is verified via email confirmation,
+                preventing unauthorized access and enhancing trust. This process
+                guarantees a seamless login experience while maintaining the
+                highest standards of account protection, making it ideal for
+                environments that prioritize secure user management.
               </p>
             </div>
           </div>
@@ -165,4 +166,4 @@ function HomePage() {
   );
 }
 
-export default HomePage;
+export default ProfilePage;

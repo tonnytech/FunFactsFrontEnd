@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { registerUser } from "../services/userServices";
+import { registerUser } from "../../services/userServices";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
