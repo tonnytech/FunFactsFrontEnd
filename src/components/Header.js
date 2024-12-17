@@ -1,13 +1,44 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { getUser } from "../services/userServices";
+import { setUser } from "../redux/slices/userSlice";
+import { logOutUser } from "../services/userServices";
+import { logoutUser } from "../redux/slices/userSlice";// from local store
 
 const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.currentUser);
 
-  const handleLogout = () => {};
+  useEffect(() => {
+    dispatch(getUser())
+      .unwrap()
+      .then((response) => {
+        if (response.status === "success") {
+          dispatch(setUser(response.data.user));
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        console.log("Oops! something went wrong. Try again");
+      });
+  }, [dispatch]);
+
+  const handleLogout = () => {
+    dispatch(logOutUser())
+      .unwrap()
+      .then((response) => {
+        if (response.status === "success") {
+          dispatch(logoutUser());
+          navigate("/questions");
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        console.log("Oops! something went wrong. Try again");
+      });
+  };
 
   return (
     <nav className='z-50 bg-white border-b backdrop-blur-lg bg-opacity-80 pr-10'>

@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { AddFact } from "../services/factsServices";
+import { useDispatch } from "react-redux";
 
 const AddFactsComponents = () => {
+  const dispatch = useDispatch ();
   const [formData, setFormData] = useState({
     question: "",
     answer: "",
@@ -16,18 +19,18 @@ const AddFactsComponents = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    //   dispatch(AddQuizAnsBlock(formData))
-    //     .unwrap()
-    //     .then((response) => {
-    //       console.log(response);
-    //       if (response) {
-    //         setSubmitFeedback(response.status);
-    //       }
-    //     })
-    //     .catch((error) => {
-    //       setSubmitFeedback(error);
-    //       console.error("Save quiz error:", error);
-    //     });
+      dispatch(AddFact(formData))
+        .unwrap()
+        .then((response) => {
+          console.log(response);
+          if (response) {
+            setSubmitFeedback(response);
+          }
+        })
+        .catch((error) => {
+          setSubmitFeedback(error);
+          console.error("Save quiz error:", error);
+        });
   };
 
   return (
