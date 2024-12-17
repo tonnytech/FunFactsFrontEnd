@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const AddFactsPage = () => {
+const AddFactsComponents = () => {
   const [formData, setFormData] = useState({
     question: "",
     answer: "",
@@ -123,4 +123,4 @@ const AddFactsPage = () => {
   );
 };
 
-export default AddFactsPage;
+export default AddFactsComponents;

@@ -10,6 +10,8 @@ import HomePage from "./pages/factPages/HomePage";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import FactQuestionsPage from "./pages/factPages/FactQuestionsPage";
+import UserProfilePage from "./pages/factPages/UserProfilePage";
+import BoughtFacts from "./pages/factPages/BoughtFacts";
 
 function App() {
   return (
@@ -19,13 +21,14 @@ function App() {
         <Routes>
           {/* user routes */}
           <Route path='/' element={<HomePage />} />
-          <Route path='/profile' element={<ProfilePage />} />
+          <Route path='/profile' element={<UserProfilePage />} />
           <Route path='/login' element={<LoginPage />} />
           <Route path='/register' element={<RegisterPage />} />
           <Route path='/forgotPassword' element={<ForgotPassword />} />
           <Route path='/resetPassword/:token' element={<ResetPassword />} />
           {/* questions routes */}
           <Route path='/questions' element={<FactQuestionsPage />} />
+          <Route path='/questions/:id' element={<BoughtFacts />} />
         </Routes>
         <Footer />
       </BrowserRouter>
