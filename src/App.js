@@ -10,7 +10,7 @@ import HomePage from "./pages/factPages/HomePage";
 
 function App() {
   return (
-    <>
+    <main className='mx-auto max-w-screen-lg border-2 px-8 my-2'>
       <BrowserRouter>
         <Routes>
           {/* user routes */}
@@ -22,7 +22,7 @@ function App() {
           <Route path='/resetPassword/:token' element={<ResetPassword />} />
         </Routes>
       </BrowserRouter>
-    </>
+    </main>
   );
 }
 
