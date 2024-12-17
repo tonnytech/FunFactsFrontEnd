@@ -7,7 +7,6 @@ import HandSvg from "../../images/HandSvg";
 const HomePage = () => {
   return (
     <section className=''>
-      <Header />
       <p className='md:text-xl text-center py-10 md:py-20 md:px-20'>
         Hi, welcome to this FunFact website. This website was developed to test
         paymet systems and backend and frontend security by selling fun facts.
@@ -21,7 +20,6 @@ const HomePage = () => {
           </button>
         </div>
       </div>
-      <Footer />
     </section>
   );
 };

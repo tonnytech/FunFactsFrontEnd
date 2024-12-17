@@ -7,11 +7,15 @@ import RegisterPage from "./pages/userPages/RegisterPage";
 import ForgotPassword from "./pages/userPages/ForgotPassword";
 import ResetPassword from "./pages/userPages/ResetPassword";
 import HomePage from "./pages/factPages/HomePage";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import FactQuestionsPage from "./pages/factPages/FactQuestionsPage";
 
 function App() {
   return (
     <main className='mx-auto max-w-screen-lg border-2 px-8 my-2'>
       <BrowserRouter>
+        <Header />
         <Routes>
           {/* user routes */}
           <Route path='/' element={<HomePage />} />
@@ -20,7 +24,10 @@ function App() {
           <Route path='/register' element={<RegisterPage />} />
           <Route path='/forgotPassword' element={<ForgotPassword />} />
           <Route path='/resetPassword/:token' element={<ResetPassword />} />
+          {/* questions routes */}
+          <Route path='/questions' element={<FactQuestionsPage />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </main>
   );
