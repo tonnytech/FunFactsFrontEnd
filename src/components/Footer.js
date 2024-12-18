@@ -5,7 +5,7 @@ const Footer = () => {
     <div>
       <div className='text-center mt-20 pb-20'>
         <a
-          href='#'
+          href='https://tonnytech.github.io/portfolio_blog_frontend/'
           className='flex items-center justify-center mb-5 text-2xl font-semibold text-gray-900'>
           <img
             src='https://www.svgrepo.com/show/499962/music.svg'
