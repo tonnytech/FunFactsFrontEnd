@@ -10,6 +10,17 @@ function RegisterPage() {
     password: "",
     passwordConfirm: "",
   });
+  
+  const [authError, setAuthError] = useState("");
+
+  useEffect(() => {
+    if (authError) {
+      const timer = setTimeout(() => {
+        setAuthError("");
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [authError]);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -68,6 +79,7 @@ function RegisterPage() {
                 </label>
                 <input
                   onChange={handleChange}
+                  required
                   name='name'
                   type='text'
                   id='name'
@@ -83,6 +95,7 @@ function RegisterPage() {
                 </label>
                 <input
                   onChange={handleChange}
+                  required
                   name='email'
                   type='email'
                   id='email'
@@ -97,6 +110,7 @@ function RegisterPage() {
                   Password
                 </label>
                 <input
+                  required
                   onChange={handleChange}
                   value={formData.password}
                   name='password'
@@ -113,6 +127,7 @@ function RegisterPage() {
                   Confirm Password
                 </label>
                 <input
+                  required
                   onChange={handleChange}
                   name='passwordConfirm'
                   type='password'

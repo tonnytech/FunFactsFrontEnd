@@ -11,9 +11,19 @@ function Login() {
     email: "",
     password: "",
   });
+  const [authError, setAuthError] = useState("");
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (authError) {
+      const timer = setTimeout(() => {
+        setAuthError("");
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [authError]);
 
   useEffect(() => {
     dispatch(getUser())
@@ -25,12 +35,11 @@ function Login() {
       })
       .catch((error) => {
         console.error(error);
-        console.log("Oops! something went wrong. Try again");
+        setAuthError(error.message);
       });
   }, [dispatch]);
 
   const { user } = useSelector((state) => state.currentUser);
-  console.log(user);
 
   useEffect(() => {
     if (user) {
@@ -49,14 +58,12 @@ function Login() {
       .unwrap()
       .then((response) => {
         if (response.status === "Success") {
-          console.log(response);
           dispatch(setUser(response.data.user));
           navigate("/");
         }
       })
       .catch((error) => {
-        console.error(error);
-        console.log("Oops! something went wrong. Try again");
+        setAuthError(error.message);
       });
   };
 
@@ -64,6 +71,13 @@ function Login() {
     <div className='min-h-screen flex items-center justify-center bg-gray-100'>
       <div className='max-w-md w-full bg-white p-8 rounded shadow-md'>
         <h2 className='text-2xl font-bold text-center mb-6'>Login</h2>
+        {authError ? (
+          <h4 className='text-red-600 bg-red-100 border border-red-400 rounded-md px-4 py-2 mb-4 text-center'>
+            {authError}
+          </h4>
+        ) : (
+          ""
+        )}
         <form onSubmit={handleSubmit}>
           <div className='mb-4'>
             <label
@@ -72,6 +86,7 @@ function Login() {
               Email
             </label>
             <input
+              required
               type='email'
               onChange={handleChange}
               id='email'
@@ -87,6 +102,7 @@ function Login() {
               Password
             </label>
             <input
+              required
               type='password'
               name='password'
               onChange={handleChange}

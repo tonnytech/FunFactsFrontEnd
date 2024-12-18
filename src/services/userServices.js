@@ -73,7 +73,6 @@ export const forgotPassword = createAsyncThunk(
         data: adminData,
         withCredentials: true,
       });
-      console.log(res.data);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
@@ -92,7 +91,6 @@ export const resetPassword = createAsyncThunk(
         data: formData,
         withCredentials: true,
       });
-      console.log(res.data);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);

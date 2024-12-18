@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getUser } from "../services/userServices";
 import { setUser } from "../redux/slices/userSlice";
 import { logOutUser } from "../services/userServices";
-import { logoutUser } from "../redux/slices/userSlice";// from local store
+import { resetUser } from "../redux/slices/userSlice"; // from local store
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -21,7 +21,6 @@ const Header = () => {
       })
       .catch((error) => {
         console.error(error);
-        console.log("Oops! something went wrong. Try again");
       });
   }, [dispatch]);
 
@@ -30,13 +29,12 @@ const Header = () => {
       .unwrap()
       .then((response) => {
         if (response.status === "success") {
-          dispatch(logoutUser());
+          dispatch(resetUser());
           navigate("/questions");
         }
       })
       .catch((error) => {
         console.error(error);
-        console.log("Oops! something went wrong. Try again");
       });
   };
 
@@ -72,7 +70,7 @@ const Header = () => {
             ) : (
               <Link
                 className='text-yellow-800 bg-indigo-100 hover:bg-indigo-200 inline-flex items-center justify-center px-3 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm '
-                to='/signup'>
+                to='/register'>
                 Sign up
               </Link>
             )}

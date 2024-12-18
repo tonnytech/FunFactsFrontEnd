@@ -16,8 +16,6 @@ function ResetPassword() {
   const navigate = useNavigate();
   const { token } = useParams();
 
-  console.log(token);
-
   const { userRegisterMessage } = useSelector((state) => state.currentUser);
 
   const handleChange = (e) => {
@@ -33,7 +31,6 @@ function ResetPassword() {
       .then((response) => {
         if (response) setIsLoading(false);
         if (response.status === "Success") {
-          console.log(response);
           dispatch(setUser(response.data.user));
           navigate("/");
         }

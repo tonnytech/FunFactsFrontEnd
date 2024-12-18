@@ -22,7 +22,6 @@ const AddFactsComponents = () => {
       dispatch(AddFact(formData))
         .unwrap()
         .then((response) => {
-          console.log(response);
           if (response) {
             setSubmitFeedback(response);
           }

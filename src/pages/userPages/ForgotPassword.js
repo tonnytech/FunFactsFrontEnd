@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { forgotPassword } from "../../services/userServices";
@@ -11,6 +11,18 @@ function ForgotPassword() {
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [ForgotPassError, setForgotPassError] = useState(false);
+
+    const [authError, setAuthError] = useState("");
+
+
+    useEffect(() => {
+      if (authError) {
+        const timer = setTimeout(() => {
+          setAuthError("");
+        }, 3000);
+        return () => clearTimeout(timer);
+      }
+    }, [authError]);
 
   const dispatch = useDispatch();
 
@@ -33,8 +45,9 @@ function ForgotPassword() {
         }
       })
       .catch((error) => {
+        setAuthError(error.message)
+        setIsLoading(false)
         console.error(error);
-        console.log("Oops! something went wrong. Try again");
       });
   };
 
@@ -48,6 +61,14 @@ function ForgotPassword() {
               {" "}
               <h1>Loading...</h1>
             </div>
+          ) : (
+            ""
+          )}
+
+          {authError ? (
+            <h4 className='text-red-600 bg-red-100 border border-red-400 rounded-md px-4 py-2 mb-4 text-center'>
+              {authError}
+            </h4>
           ) : (
             ""
           )}

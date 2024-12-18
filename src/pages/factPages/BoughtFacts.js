@@ -1,23 +1,24 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, {useEffect} from "react";
+import { Link, useParams } from "react-router-dom";
 import Spinner from "../../components/Spinner";
+import { fetchQuizAnsBlock } from "../../services/factsServices";
+import { useSelector, useDispatch } from "react-redux";
 
 const BoughtFacts = () => {
-  // const { quizes, quizesIsLoading } = useSelector(
-  //   (state) => state.questionAnswerBlock
-  // );
+  const { quize, quizeIsLoading } = useSelector(
+    (state) => state.questionAnswerBlock
+  );
 
-  // const { id } = useParams();
-  // const dispatch = useDispatch();
+  const { id } = useParams();
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(fetchQuizAnsBlock(id));
-  // }, [dispatch, id]);
-  const quizesIsLoading = false;
-  const quizes = [];
+  useEffect(() => {
+    dispatch(fetchQuizAnsBlock(id));
+  }, [dispatch, id]);
+
   return (
     <section>
-      {quizesIsLoading ? (
+      {quizeIsLoading ? (
         <Spinner />
       ) : (
         <>
@@ -59,8 +60,8 @@ const BoughtFacts = () => {
                   </div>
 
                   <p className='ml-4 md:ml-6 text-bold'>
-                    {quizes.script ? (
-                      quizes.script.question
+                    {quize.fact ? (
+                      quize.fact.question
                     ) : (
                       <span>Refresh this page</span>
                     )}
@@ -75,8 +76,8 @@ const BoughtFacts = () => {
                   </div>
 
                   <p className='ml-4 md:ml-6 text-bold text-gray-800'>
-                    {quizes.script ? (
-                      quizes.script.answer
+                    {quize.fact ? (
+                      quize.fact.answer
                     ) : (
                       <span>Refresh this page</span>
                     )}

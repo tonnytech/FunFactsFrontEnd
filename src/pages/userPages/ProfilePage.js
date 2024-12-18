@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser, logOutUser } from "../../services/userServices";
-import { setUser, logoutUser } from "../../redux/slices/userSlice";
+import { setUser, resetUser } from "../../redux/slices/userSlice";
 import { useNavigate } from "react-router-dom";
 
 function ProfilePage() {
@@ -26,7 +26,6 @@ function ProfilePage() {
       })
       .catch((error) => {
         console.error(error);
-        console.log("Oops! something went wrong. Try again");
       });
   }, [dispatch]);
 
@@ -35,13 +34,12 @@ function ProfilePage() {
       .unwrap()
       .then((response) => {
         if (response.status === "success") {
-          dispatch(logoutUser());
+          dispatch(resetUser());
           navigate("/login");
         }
       })
       .catch((error) => {
         console.error(error);
-        console.log("Oops! something went wrong. Try again");
       });
   };
 

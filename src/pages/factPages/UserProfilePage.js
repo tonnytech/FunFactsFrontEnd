@@ -6,15 +6,19 @@ import AddFactsComponents from "../../components/AddFactsComponents";
 import NotificationComponent from "../../components/NotificationComponents";
 import QuestionBlock from "../../components/QuestionBlock";
 import Spinner from "../../components/Spinner";
+import { fetchPaidFacts } from "../../services/factsServices";
 
 const UserProfilePage = () => {
   const dispatch = useDispatch();
   const [selectedMenu, setSelectedMenu] = useState("About");
   const { user } = useSelector((state) => state.currentUser);
+  const { paidQuizes, paidQuizesIsLoading } = useSelector(
+    (state) => state.paidFacts
+  );
 
-  //from paid quizes
-  const paidQuizesIsLoading = false;
-  const paidQuizes = [];
+  useEffect(() => {
+    dispatch(fetchPaidFacts());
+  }, [dispatch]);
 
   const menuContent = {
     About: <ProfileComponent currentUser={user} />,

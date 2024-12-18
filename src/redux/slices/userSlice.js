@@ -17,12 +17,12 @@ const userSlice = createSlice({
   reducers: {
     setUser: (state, actions) => {
       state.user = actions.payload;
-      setLocalStorage('AuthenticateWebUserData', actions.payload)
+      setLocalStorage("AuthenticateWebUserData", actions.payload);
     },
 
-    logoutUser: (state) => {
+    resetUser: (state) => {
       state.user = "";
-      setLocalStorage("AuthenticateWebUserData", '');
+      setLocalStorage("AuthenticateWebUserData", "");
     },
   },
   extraReducers: (builder) => {
@@ -32,7 +32,6 @@ const userSlice = createSlice({
         userIsLoading: true,
       }))
       .addCase(registerUser.fulfilled, (state, action) => {
-        console.log(action.payload);
         const returnData = {
           ...state,
           userRegisterMessage: action.payload.message,
@@ -50,5 +49,5 @@ const userSlice = createSlice({
   },
 });
 
-export const { setUser, logoutUser } = userSlice.actions;
+export const { setUser, resetUser } = userSlice.actions;
 export default userSlice.reducer;
