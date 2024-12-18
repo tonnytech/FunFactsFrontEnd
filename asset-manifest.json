@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/FunFactsFrontEnd/static/css/main.be00343f.css",
+    "main.js": "/FunFactsFrontEnd/static/js/main.1ca7b598.js",
+    "static/media/free.png": "/FunFactsFrontEnd/static/media/free.11d83019af54d774b583.png",
+    "index.html": "/FunFactsFrontEnd/index.html",
+    "main.be00343f.css.map": "/FunFactsFrontEnd/static/css/main.be00343f.css.map",
+    "main.1ca7b598.js.map": "/FunFactsFrontEnd/static/js/main.1ca7b598.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.be00343f.css",
+    "static/js/main.1ca7b598.js"
+  ]
+}
